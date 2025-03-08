@@ -13,7 +13,10 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class LavaFluidMixin {
     @Redirect(
             method = "flow",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/WorldAccess;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z")
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/world/WorldAccess;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"
+            )
     )
     public boolean flow(WorldAccess worldAccess, BlockPos blockPos, BlockState blockState, int i) {
         return worldAccess.setBlockState(blockPos, LycorisFluidReplacements.getReplacement(), i);

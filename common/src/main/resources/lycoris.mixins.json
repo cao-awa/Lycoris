@@ -6,6 +6,7 @@
   "mixins": [
     "bed.BedBlockMixin",
     "dimension.type.DimensionTypeMixin",
+    "lava.FluidBlockMixin",
     "lava.LavaFluidMixin"
   ],
   "client": [
