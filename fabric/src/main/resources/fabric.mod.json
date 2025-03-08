@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "lycoris",
+  "version": "${version}",
+  "name": "lycoris",
+  "description": "Foo!",
+  "authors": [
+    "cao_awa"
+  ],
+  "contact": {
+    "repo": "https://github.com/cao-awa/lycoris",
+    "issues": "https://github.com/cao-awa/Lycoris/issues"
+  },
+  "license": "GPL-3.0",
+  "icon": "assets/lycoris/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.github.cao.awa.lycoris.FabricLycoris"
+    ],
+    "client": [
+    ],
+    "server": [
+    ]
+  },
+  "mixins": [
+    "lycoris.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "*",
+    "minecraft": "*",
+    "fabric": "*"
+  }
+}
