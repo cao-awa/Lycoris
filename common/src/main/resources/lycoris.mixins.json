@@ -6,6 +6,7 @@
   "mixins": [
     "bed.BedBlockMixin",
     "dimension.type.DimensionTypeMixin",
+    "entity.block.BlockAttachedEntityMixin",
     "lava.FluidBlockMixin",
     "lava.LavaFluidMixin"
   ],
