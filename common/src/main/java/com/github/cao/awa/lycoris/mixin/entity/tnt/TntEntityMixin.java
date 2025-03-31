@@ -58,9 +58,9 @@ public abstract class TntEntityMixin extends Entity {
                 // Do not apply if player is spector mode.
                 if (this.target.isSpectator() || this.target.isDead()) {
                     this.target = null;
+                } else {
+                    TntFollower.followPlayer(asTnt(), this.target);
                 }
-
-                TntFollower.followPlayer(asTnt(), this.target);
             }
         }
     }
