@@ -1,6 +1,7 @@
 package com.github.cao.awa.lycoris.mixin.entity.player;
 
 import com.github.cao.awa.lycoris.Lycoris;
+import com.github.cao.awa.lycoris.config.LycorisConfig;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
@@ -36,12 +37,14 @@ public abstract class PlayerEntityMixin extends Entity {
     )
     public void tickFlintAndSteelFire(CallbackInfo ci) {
         // Let player in fire when player has flint and steel.
-        if (this.strideDistance > 0F) {
-            if (this.inventory.contains(
-                    stack -> stack.getItem() == Items.FLINT_AND_STEEL
-            ) && Lycoris.RANDOM.nextInt(100) == 0) {
-                // Fire for 4 seconds.
-                setOnFireForTicks(80);
+        if (LycorisConfig.onFireWhenWithFlintAndSteelRandomly) {
+            if (this.strideDistance > 0F) {
+                if (this.inventory.contains(
+                        stack -> stack.getItem() == Items.FLINT_AND_STEEL
+                ) && Lycoris.RANDOM.nextInt(100) == 0) {
+                    // Fire for 4 seconds.
+                    setOnFireForTicks(LycorisConfig.onFireWhenWithFlintAndSteelTicks);
+                }
             }
         }
     }

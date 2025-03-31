@@ -23,10 +23,10 @@ public class TntFollower {
                         )
                 );
             }
-        }
 
-        // Move the TNT.
-        tnt.move(MovementType.SELF, tnt.getVelocity());
-        tnt.tickBlockCollision();
+            // Move the TNT.
+            tnt.move(MovementType.SELF, tnt.getVelocity());
+            tnt.tickBlockCollision();
+        }
     }
 }

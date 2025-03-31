@@ -1,5 +1,6 @@
 package com.github.cao.awa.lycoris.mixin.dimension.type;
 
+import com.github.cao.awa.lycoris.config.LycorisConfig;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.dimension.DimensionTypes;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,6 +17,8 @@ public class DimensionTypeMixin {
     )
     public void ultrawarm(CallbackInfoReturnable<Boolean> cir) {
         // Let all dimension can places water.
-        cir.setReturnValue(false);
+        if (LycorisConfig.waterCanPlacesInAllWorld) {
+            cir.setReturnValue(false);
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.github.cao.awa.lycoris.mixin.entity.block;
 
 import com.github.cao.awa.lycoris.Lycoris;
+import com.github.cao.awa.lycoris.config.LycorisConfig;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.decoration.BlockAttachedEntity;
 import net.minecraft.entity.decoration.LeashKnotEntity;
@@ -17,10 +18,13 @@ public class BlockAttachedEntityMixin {
     )
     public void randomDiscard(CallbackInfo ci) {
         // Let the leash knot randomly discard.
-        if (((Entity) (Object) this) instanceof LeashKnotEntity leashKnot) {
-            // Only 1000 of 1.
-            if (Lycoris.RANDOM.nextInt(1000) == 0) {
-                leashKnot.discard();
+        if (LycorisConfig.entitiesLeaveLeashKnotRandomly) {
+            // Do not affect to other attached block.
+            if (((Entity) (Object) this) instanceof LeashKnotEntity leashKnot) {
+                // Only 1000 of 1.
+                if (Lycoris.RANDOM.nextInt(1000) == 0) {
+                    leashKnot.discard();
+                }
             }
         }
     }

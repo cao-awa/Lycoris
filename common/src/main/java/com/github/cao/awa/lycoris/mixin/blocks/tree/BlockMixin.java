@@ -37,11 +37,11 @@ public abstract class BlockMixin {
             )
     )
     private void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player, CallbackInfoReturnable<BlockState> cir) {
-        //tree randomly falls down when player mining log blocks without sneaking
+        // Tree randomly falls down when player mining log blocks without sneaking
         if(Lycoris.RANDOM.nextInt(0,100) < 30 && !player.isCreative() && !player.isSneaking() && isLog(this.getDefaultState().getBlock())) {
             Set<BlockPos> treeBlocks = TreeAnalyzer.findTree(world, pos);
             Map<BlockPos,BlockState> blocks = new HashMap<>();
-            //delete all the blocks before turing them into falling blocks to prevent instant-converting
+            // Delete all the blocks before turing them into falling blocks to prevent instant-converting
             for(BlockPos blockPos : treeBlocks){
                 blocks.put(blockPos, (world.getBlockState(blockPos)));
                 world.setBlockState(blockPos, state.getFluidState().getBlockState(), 3);

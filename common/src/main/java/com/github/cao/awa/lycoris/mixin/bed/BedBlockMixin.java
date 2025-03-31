@@ -1,5 +1,6 @@
 package com.github.cao.awa.lycoris.mixin.bed;
 
+import com.github.cao.awa.lycoris.config.LycorisConfig;
 import net.minecraft.block.BedBlock;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,7 +16,9 @@ public class BedBlockMixin {
             cancellable = true
     )
     private static void bedWorks(World world, CallbackInfoReturnable<Boolean> ci) {
-        // Let bed explosions in the overworld.
-        ci.setReturnValue(world.getRegistryKey() != World.OVERWORLD);
+        if (LycorisConfig.bedExplodeInOverworld) {
+            // Let bed explosions in the overworld.
+            ci.setReturnValue(world.getRegistryKey() != World.OVERWORLD);
+        }
     }
 }

@@ -1,0 +1,12 @@
+{
+  "tnt_follow_player": true,
+  "tnt_immediately_explode_randomly": true,
+  "tnt_failure_explode_randomly": true,
+  "bed_explode_in_overworld": true,
+  "lava_and_water_generate_more_blocks": true,
+  "entities_leave_leash_knot_randomly": true,
+  "water_can_places_in_all_world": true,
+  "on_fire_when_with_flint_and_steel_randomly": true,
+  "on_fire_when_with_flint_and_steel_ticks": 80,
+  "trees_falling_down_when_break_trunk_randomly": true
+}

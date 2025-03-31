@@ -1,6 +1,7 @@
 package com.github.cao.awa.lycoris.mixin.entity.tnt;
 
 import com.github.cao.awa.lycoris.Lycoris;
+import com.github.cao.awa.lycoris.config.LycorisConfig;
 import com.github.cao.awa.lycoris.tnt.TntFollower;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.PlayerEntity;
@@ -44,8 +45,9 @@ public abstract class TntEntityMixin extends Entity {
     )
     public void tickImmediately(CallbackInfo ci) {
         // Randomly explosion immediately in 100 of 1.
-        if (Lycoris.RANDOM.nextInt(100) == 0) {
+        if (LycorisConfig.tntImmediatelyExplodeRandomly && Lycoris.RANDOM.nextInt(100) == 0) {
             this.isImmediately = true;
+            // Let fuse be zero to explode in next tick.
             setFuse(0);
         }
 
@@ -54,13 +56,11 @@ public abstract class TntEntityMixin extends Entity {
             // Only follow player, do not apply to other entities.
             if (this.causingEntity instanceof PlayerEntity causingPlayer) {
                 this.target = causingPlayer;
-
-                // Do not apply if player is spector mode.
-                if (this.target.isSpectator() || this.target.isDead()) {
-                    this.target = null;
-                } else {
-                    TntFollower.followPlayer(asTnt(), this.target);
-                }
+            }
+        } else if (LycorisConfig.tntFollowPlayer) {
+            // Do not apply if player is spector mode.
+            if (!this.target.isSpectator() && !this.target.isDead()) {
+                TntFollower.followPlayer(asTnt(), this.target);
             }
         }
     }
@@ -73,9 +73,11 @@ public abstract class TntEntityMixin extends Entity {
             cancellable = true
     )
     public void onExplode(CallbackInfo ci) {
-        // Randomly failure in 1000 of 1
-        if (!this.isImmediately && Lycoris.RANDOM.nextInt(1000) == 0) {
-            ci.cancel();
+        // Randomly failure in 1000 of 1.
+        if (LycorisConfig.tntFailureExplodeRandomly) {
+            if (!this.isImmediately && Lycoris.RANDOM.nextInt(1000) == 0) {
+                ci.cancel();
+            }
         }
     }
 }
