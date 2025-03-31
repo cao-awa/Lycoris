@@ -16,7 +16,7 @@ public class BlockAttachedEntityMixin {
             at = @At("RETURN")
     )
     public void randomDiscard(CallbackInfo ci) {
-        // Let leash knot randomly discard.
+        // Let the leash knot randomly discard.
         if (((Entity) (Object) this) instanceof LeashKnotEntity leashKnot) {
             // Only 1000 of 1.
             if (Lycoris.RANDOM.nextInt(1000) == 0) {

@@ -14,6 +14,7 @@ public class DimensionTypeMixin {
             cancellable = true
     )
     public void ultrawarm(CallbackInfoReturnable<Boolean> cir) {
+        // Let all dimension can places water.
         cir.setReturnValue(false);
     }
 }

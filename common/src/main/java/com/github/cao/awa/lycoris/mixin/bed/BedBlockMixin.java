@@ -15,6 +15,7 @@ public class BedBlockMixin {
             cancellable = true
     )
     private static void bedWorks(World world, CallbackInfoReturnable<Boolean> ci) {
+        // Let bed explosions in the overworld.
         ci.setReturnValue(world.getRegistryKey() != World.OVERWORLD);
     }
 }
