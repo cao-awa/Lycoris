@@ -8,5 +8,7 @@
   "water_can_places_in_all_world": true,
   "on_fire_when_with_flint_and_steel_randomly": true,
   "on_fire_when_with_flint_and_steel_ticks": 80,
-  "trees_falling_down_when_break_trunk_randomly": true
+  "trees_falling_down_when_break_trunk_randomly": true,
+  "lava_melt_bucket": true,
+  "lava_melt_bucket_time": 200
 }

@@ -1,6 +1,6 @@
 package com.github.cao.awa.lycoris;
 
-import com.github.cao.awa.lycoris.gameRules.LycorisFabricGameRules;
+import com.github.cao.awa.lycoris.config.LycorisConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,6 +12,7 @@ public class Lycoris {
     public static final String VERSION = "1.1.0";
 
     public static void init() {
-
+        LycorisConfig.makeConfig();
+        LOGGER.info("Lycoris is in your Minecraft~");
     }
 }

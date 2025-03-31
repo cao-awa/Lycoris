@@ -12,7 +12,9 @@ public class LycorisFluidReplacements {
     private static final Random RANDOM = new Random();
 
     public static BlockState getReplacement() {
+        // Get replacements.
         List<Block> blocks = Registries.BLOCK.stream().toList();
+        // Random replacement.
         return blocks.get(RANDOM.nextInt(blocks.size())).getDefaultState();
     }
 }
