@@ -4,14 +4,16 @@
   "package": "com.github.cao.awa.lycoris.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "GameRulesAccessor",
     "bed.BedBlockMixin",
+    "blocks.tree.BlockMixin",
     "dimension.type.DimensionTypeMixin",
     "entity.block.BlockAttachedEntityMixin",
     "entity.player.PlayerEntityMixin",
     "entity.tnt.TntEntityMixin",
+    "lava.ItemStackMixin",
     "lava.FluidBlockMixin",
-    "lava.LavaFluidMixin",
-    "blocks.tree.BlockMixin"
+    "lava.LavaFluidMixin"
   ],
   "client": [
   ],

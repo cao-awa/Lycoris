@@ -1,5 +1,6 @@
 package com.github.cao.awa.lycoris;
 
+import com.github.cao.awa.lycoris.gameRules.LycorisFabricGameRules;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
