@@ -10,7 +10,8 @@
     "entity.player.PlayerEntityMixin",
     "entity.tnt.TntEntityMixin",
     "lava.FluidBlockMixin",
-    "lava.LavaFluidMixin"
+    "lava.LavaFluidMixin",
+    "blocks.tree.BlockMixin"
   ],
   "client": [
   ],

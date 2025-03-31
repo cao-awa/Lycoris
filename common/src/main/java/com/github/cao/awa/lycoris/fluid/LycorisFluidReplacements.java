@@ -1,26 +1,18 @@
 package com.github.cao.awa.lycoris.fluid;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.registry.Registries;
 
+import java.util.List;
 import java.util.Random;
 
 public class LycorisFluidReplacements {
-    private static final BlockState[] STATES = new BlockState[]{
-            Blocks.COBBLESTONE.getDefaultState(),
-            Blocks.COBBLED_DEEPSLATE.getDefaultState(),
-            Blocks.NETHERRACK.getDefaultState(),
-            Blocks.END_STONE.getDefaultState(),
-            Blocks.OBSIDIAN.getDefaultState(),
-            Blocks.CRYING_OBSIDIAN.getDefaultState(),
-            Blocks.STONE.getDefaultState(),
-            Blocks.GRASS_BLOCK.getDefaultState(),
-            Blocks.BRICKS.getDefaultState(),
-            Blocks.BLACKSTONE.getDefaultState(),
-    };
     private static final Random RANDOM = new Random();
 
     public static BlockState getReplacement() {
-        return STATES[RANDOM.nextInt(STATES.length)];
+        List<Block> blocks = Registries.BLOCK.stream().toList();
+        return blocks.get(RANDOM.nextInt(blocks.size())).getDefaultState();
     }
 }
