@@ -12,6 +12,7 @@
 ## TNT
 1. Randomly explosion immediately (100 of 1)
 2. Randomly failure to explosion (1000 of 1)
+3. Will follow to the player that triggered the TNT
 
 ## Player
 1. Randomly in fire if inventory has flint and steel when player moving (100 of 1)
