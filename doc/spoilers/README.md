@@ -16,3 +16,6 @@
 
 ## Player
 1. Randomly in fire if inventory has flint and steel when player moving (100 of 1)
+
+## Tree
+1. Will random falls down when break the trunk (100 of 30) 
