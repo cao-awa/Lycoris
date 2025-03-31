@@ -1,6 +1,7 @@
 package com.github.cao.awa.lycoris.mixin.entity.tnt;
 
 import com.github.cao.awa.lycoris.Lycoris;
+import com.github.cao.awa.lycoris.tnt.TntFollower;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Vec3d;
@@ -28,6 +29,11 @@ public abstract class TntEntityMixin extends Entity {
 
     @Shadow @Nullable private LivingEntity causingEntity;
 
+    @Unique
+    private TntEntity asTnt() {
+        return (TntEntity) (Object) this;
+    }
+
     @Inject(
             method = "tick",
             at = @At(
@@ -43,39 +49,20 @@ public abstract class TntEntityMixin extends Entity {
             setFuse(0);
         }
 
-        followPlayer();
-    }
-
-    private void followPlayer() {
-        World world = getWorld();
-
+        // Let the TNT follow to the player.
         if (this.target == null) {
+            // Only follow player, do not apply to other entities.
             if (this.causingEntity instanceof PlayerEntity causingPlayer) {
                 this.target = causingPlayer;
-            } else {
-                return;
+
+                // Do not apply if player is spector mode.
+                if (this.target.isSpectator() || this.target.isDead()) {
+                    this.target = null;
+                }
+
+                TntFollower.followPlayer(asTnt(), this.target);
             }
         }
-
-        if (this.target.isSpectator() || this.target.isDead()) {
-            this.target = null;
-        }
-
-        if (this.target != null) {
-            Vec3d targetPos = new Vec3d(
-                    this.target.getX() - getX(),
-                    this.target.getY() + this.target.getStandingEyeHeight() / 2.0D - getY(),
-                    this.target.getZ() - getZ()
-            );
-            double lengthSquared = targetPos.lengthSquared();
-            if (lengthSquared < 256.0) {
-                double speed = 1.0 - Math.sqrt(lengthSquared) / 8.0;
-                setVelocity(getVelocity().add(targetPos.normalize().multiply(speed * speed * 0.2)));
-            }
-        }
-
-        move(MovementType.SELF, getVelocity());
-        tickBlockCollision();
     }
 
     @Inject(
