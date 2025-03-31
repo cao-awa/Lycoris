@@ -57,16 +57,19 @@ public abstract class ItemStackMixin {
                 );
             }
         } else {
-            int lavaMeltBucketTime = LycorisConfig.lavaMeltBucketTicks;
-
-            set(DataComponentTypes.MAX_DAMAGE, lavaMeltBucketTime);
             if (entity instanceof PlayerEntity playerEntity) {
+                // Only enable this feature in survival mode.
                 if (playerEntity.isCreative() || playerEntity.isSpectator() || playerEntity.isSubmergedInWater()) {
                     return;
                 }
+
+                int lavaMeltBucketTime = LycorisConfig.lavaMeltBucketTicks;
+
                 // Count the melt time.
+                set(DataComponentTypes.MAX_DAMAGE, lavaMeltBucketTime);
                 playerEntity.getInventory().getStack(slot).setDamage(this.burningTime);
                 this.burningTime++;
+
                 // Lava bucket will melt.
                 if (this.burningTime > lavaMeltBucketTime) {
                     world.setBlockState(entity.getBlockPos(), Blocks.LAVA.getDefaultState());
