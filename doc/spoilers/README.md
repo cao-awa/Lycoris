@@ -18,4 +18,7 @@
 1. Randomly in fire if inventory has flint and steel when player moving (100 of 1)
 
 ## Tree
-1. Will random falls down when break the trunk (100 of 30) 
+1. Will random falls down when break the trunk (100 of 30)
+
+## Lava bucket
+1. The lava bucket will melt after times, result is magma block
