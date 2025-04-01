@@ -25,4 +25,3 @@
 
 ## Enderman
 1. The enderman will take the blocks that player stepping on randomly (100 of 1)
-2. 
