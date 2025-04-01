@@ -8,11 +8,12 @@
     "bed.BedBlockMixin",
     "blocks.tree.BlockMixin",
     "dimension.type.DimensionTypeMixin",
+    "enderman.EndermanEntityMixin",
     "entity.block.BlockAttachedEntityMixin",
     "entity.player.PlayerEntityMixin",
     "entity.tnt.TntEntityMixin",
-    "lava.ItemStackMixin",
     "lava.FluidBlockMixin",
+    "lava.ItemStackMixin",
     "lava.LavaFluidMixin"
   ],
   "client": [
