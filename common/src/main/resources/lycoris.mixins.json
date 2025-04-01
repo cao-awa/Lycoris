@@ -17,6 +17,8 @@
     "lava.LavaFluidMixin"
   ],
   "client": [
+    "client.button.ButtonBuilderAccessor",
+    "client.title.TitleScreenMixin"
   ],
   "server": [
   ],

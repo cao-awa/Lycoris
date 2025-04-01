@@ -25,3 +25,6 @@
 
 ## Enderman
 1. The enderman will take the blocks that player stepping on randomly (100 of 1)
+
+## GUI
+1. Swap the button positions of quit game and single player
