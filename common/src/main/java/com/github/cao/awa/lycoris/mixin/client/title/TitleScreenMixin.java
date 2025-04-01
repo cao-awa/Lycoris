@@ -57,7 +57,7 @@ public class TitleScreenMixin extends Screen {
                 if (translatable.getKey().equals("menu.singleplayer")) {
 
                     return instance.dimensions(
-                            this.width / 2 + 2, this.quitButtonY + 36 + 36 + 24, 98, 20
+                            this.width / 2 + 2, this.quitButtonY + 36 + 36 + 12, 98, 20
                     );
                 }
             }
