@@ -7,7 +7,7 @@ license = "GPLv3"
 modId = "lycoris"
 version = "${version}"
 displayName = "Lycoris"
-authors = "cao_awa"
+authors = "cao_awa,Ryan100c"
 description = '''
 Foo!
 '''

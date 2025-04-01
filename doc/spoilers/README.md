@@ -20,5 +20,9 @@
 ## Tree
 1. Will random falls down when break the trunk (100 of 30) 
 
+## Lava bucket
+1. The lava bucket will melt after times, result is magma block
+
 ## Enderman
 1. The enderman will take the blocks that player stepping on randomly (100 of 1)
+2. 
