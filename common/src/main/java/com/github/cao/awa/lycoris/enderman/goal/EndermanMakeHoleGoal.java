@@ -73,22 +73,23 @@ public class EndermanMakeHoleGoal extends TrackTargetGoal {
 
                 BlockState blockState = world.getBlockState(takeBlockPos);
                 BlockState holeBlockState = world.getBlockState(takeBlockPos);
+                if (blockState.isIn(BlockTags.ENDERMAN_HOLDABLE) && holeBlockState.isIn(BlockTags.ENDERMAN_HOLDABLE)) {
+                    world.removeBlock(takeBlockPos, false);
+                    world.emitGameEvent(GameEvent.BLOCK_DESTROY, takeBlockPos, GameEvent.Emitter.of(this.enderman, blockState));
+                    this.enderman.setCarriedBlock(blockState.getBlock().getDefaultState());
 
-                world.removeBlock(takeBlockPos, false);
-                world.emitGameEvent(GameEvent.BLOCK_DESTROY, takeBlockPos, GameEvent.Emitter.of(this.enderman, blockState));
-                this.enderman.setCarriedBlock(blockState.getBlock().getDefaultState());
-
-                world.removeBlock(holePos, false);
-                world.emitGameEvent(GameEvent.BLOCK_DESTROY, holePos, GameEvent.Emitter.of(this.enderman, blockState));
-                world.spawnEntity(
-                        new ItemEntity(
-                                world,
-                                selfPos.x,
-                                selfPos.y,
-                                selfPos.z,
-                                new ItemStack(holeBlockState.getBlock())
-                        )
-                );
+                    world.removeBlock(holePos, false);
+                    world.emitGameEvent(GameEvent.BLOCK_DESTROY, holePos, GameEvent.Emitter.of(this.enderman, blockState));
+                    world.spawnEntity(
+                            new ItemEntity(
+                                    world,
+                                    selfPos.x,
+                                    selfPos.y,
+                                    selfPos.z,
+                                    new ItemStack(holeBlockState.getBlock())
+                            )
+                    );
+                }
             }
         } else {
         }
