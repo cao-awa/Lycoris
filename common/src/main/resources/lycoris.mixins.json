@@ -12,13 +12,14 @@
     "entity.block.BlockAttachedEntityMixin",
     "entity.player.PlayerEntityMixin",
     "entity.tnt.TntEntityMixin",
+    "item.ItemStackMixin",
     "lava.FluidBlockMixin",
-    "lava.ItemStackMixin",
     "lava.LavaFluidMixin"
   ],
   "client": [
     "client.button.ButtonBuilderAccessor",
-    "client.title.TitleScreenMixin"
+    "client.title.TitleScreenMixin",
+    "entity.IEntityRenderers"
   ],
   "server": [
   ],
