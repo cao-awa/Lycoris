@@ -12,4 +12,4 @@ For example, Lycoris let entities leave the leash knot with a probability of one
 Only support newest version, but able to run in other versions if mixin available.
 
 ## Spoiler
-You can see the [Spoilers](https://github.com/cao-awa/Lycoris/tree/main/doc/spoilers) to know the Lycoris changes in Advance
+You can see the [Spoilers](https://github.com/cao-awa/Lycoris/tree/main/doc/spoilers) to know the Lycoris changes in advance.
