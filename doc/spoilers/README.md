@@ -28,3 +28,6 @@
 
 ## GUI
 1. Swap the button positions of quit game and single player
+
+## Disc
+1. Disc can be throws and flying
