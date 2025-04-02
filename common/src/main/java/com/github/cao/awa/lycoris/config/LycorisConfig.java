@@ -25,6 +25,8 @@ public class LycorisConfig {
     public static boolean treesFallingDownWhenBreakTrunkRandomly = true;
     public static boolean lavaMeltBucket = true;
     public static int lavaMeltBucketTicks = 200;
+    public static boolean discFly = true;
+    public static boolean titleScreenSwapQuitGameAndSingleplayerButtons = true;
 
     public static void makeConfig() {
         try {
@@ -46,6 +48,21 @@ public class LycorisConfig {
     }
 
     public static void writeConfig() throws IOException {
+        configJson.put("tnt_follow_player", tntFollowPlayer);
+        configJson.put("tnt_immediately_explode_randomly", tntImmediatelyExplodeRandomly);
+        configJson.put("tnt_failure_explode_randomly", tntFailureExplodeRandomly);
+        configJson.put("bed_explode_in_overworld", bedExplodeInOverworld);
+        configJson.put("lava_and_water_generate_more_blocks", lavaAndWaterGenerateMoreBlocks);
+        configJson.put("entities_leave_leash_knot_randomly", entitiesLeaveLeashKnotRandomly);
+        configJson.put("water_can_places_in_all_world", waterCanPlacesInAllWorld);
+        configJson.put("on_fire_when_with_flint_and_steel_randomly", onFireWhenWithFlintAndSteelRandomly);
+        configJson.put("on_fire_when_with_flint_and_steel_ticks", onFireWhenWithFlintAndSteelTicks);
+        configJson.put("trees_falling_down_when_break_trunk_randomly", treesFallingDownWhenBreakTrunkRandomly);
+        configJson.put("lava_melt_bucket", lavaMeltBucket);
+        configJson.put("lava_melt_bucket_ticks", lavaMeltBucketTicks);
+        configJson.put("disc_fly", discFly);
+        configJson.put("title_screen_swap_quit_game_and_singleplayer_buttons", titleScreenSwapQuitGameAndSingleplayerButtons);
+
         IOUtil.write(
                 new FileWriter(CONFIG_FILE),
                 configJson.toString(JSONWriter.Feature.PrettyFormat)
@@ -80,5 +97,7 @@ public class LycorisConfig {
         treesFallingDownWhenBreakTrunkRandomly = json.getBooleanValue("trees_falling_down_when_break_trunk_randomly", true);
         lavaMeltBucket = json.getBooleanValue("lava_melt_bucket", true);
         lavaMeltBucketTicks = json.getIntValue("lava_melt_bucket_ticks", 200);
+        discFly = json.getBooleanValue("disc_fly", true);
+        titleScreenSwapQuitGameAndSingleplayerButtons = json.getBooleanValue("title_screen_swap_quit_game_and_singleplayer_buttons", true);
     }
 }

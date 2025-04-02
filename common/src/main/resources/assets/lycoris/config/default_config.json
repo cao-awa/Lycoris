@@ -10,5 +10,7 @@
   "on_fire_when_with_flint_and_steel_ticks": 80,
   "trees_falling_down_when_break_trunk_randomly": true,
   "lava_melt_bucket": true,
-  "lava_melt_bucket_time": 200
+  "lava_melt_bucket_ticks": 200,
+  "disc_fly": true,
+  "title_screen_swap_quit_game_and_singleplayer_buttons": true
 }

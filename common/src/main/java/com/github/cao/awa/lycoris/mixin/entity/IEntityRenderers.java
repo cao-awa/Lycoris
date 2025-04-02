@@ -10,8 +10,16 @@ import java.util.Map;
 
 @Mixin(EntityRenderers.class)
 public interface IEntityRenderers {
-    @Accessor
-    static Map<EntityType<?>, EntityRendererFactory<?>> getRENDERER_FACTORIES() {
+    /**
+     * Get the renderer factories map.
+     *
+     * @author Ryan100c
+     * @author cao_awa
+     *
+     * @return the factories map
+     */
+    @Accessor("RENDERER_FACTORIES")
+    static Map<EntityType<?>, EntityRendererFactory<?>> getRendererFactories() {
         throw new AssertionError();
     }
 }

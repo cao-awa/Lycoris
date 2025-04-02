@@ -59,10 +59,12 @@ public abstract class ItemStackMixin {
     @Inject(method = "use",
             at = @At("HEAD"),
             cancellable = true
-    )//make discs throwable
+    )
     public void use(World world, PlayerEntity user, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
         ItemStack itemStack = user.getStackInHand(hand);
-        if(isMusicDisc(itemStack)){
+
+        // Make discs throwable.
+        if(LycorisConfig.discFly && isMusicDisc(itemStack)){
             world.playSound(
                     null,
                     user.getX(),
@@ -74,7 +76,15 @@ public abstract class ItemStackMixin {
                     0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F)
             );
             if (world instanceof ServerWorld serverWorld) {
-                ProjectileEntity.spawnWithVelocity(FlyingDiscEntity::new, serverWorld, itemStack, user, 0.0F, POWER, 1.0F);
+                ProjectileEntity.spawnWithVelocity(
+                        FlyingDiscEntity::new,
+                        serverWorld,
+                        itemStack,
+                        user,
+                        0.0F,
+                        POWER,
+                        1.0F
+                );
             }
             user.incrementStat(Stats.USED.getOrCreateStat(this.getItem()));
             itemStack.decrementUnlessCreative(1, user);

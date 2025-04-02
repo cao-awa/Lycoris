@@ -1,5 +1,6 @@
 package com.github.cao.awa.lycoris.mixin.client.title;
 
+import com.github.cao.awa.lycoris.config.LycorisConfig;
 import com.github.cao.awa.lycoris.mixin.client.button.ButtonBuilderAccessor;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
@@ -28,15 +29,17 @@ public class TitleScreenMixin extends Screen {
             )
     )
     protected ButtonWidget.Builder initQuit(ButtonWidget.Builder instance, int x, int y, int width, int height, Operation<ButtonWidget.Builder> original) {
-        if (((ButtonBuilderAccessor) instance).getButtonMessage() instanceof MutableText mutableText) {
-            if (mutableText.getContent() instanceof TranslatableTextContent translatable) {
-                // Swap button position of quit game and single play.
-                if (translatable.getKey().equals("menu.quit")) {
-                    this.quitButtonY = this.height / 4 + 48;
+        if (LycorisConfig.titleScreenSwapQuitGameAndSingleplayerButtons) {
+            if (((ButtonBuilderAccessor) instance).getButtonMessage() instanceof MutableText mutableText) {
+                if (mutableText.getContent() instanceof TranslatableTextContent translatable) {
+                    // Swap button position of quit game and single play.
+                    if (translatable.getKey().equals("menu.quit")) {
+                        y = this.height / 4 + 48;
 
-                    return instance.dimensions(
-                            this.width / 2 - 100, this.quitButtonY, 200, 20
-                    );
+                        return instance.dimensions(
+                                this.width / 2 - 100, y, 200, 20
+                        );
+                    }
                 }
             }
         }
@@ -51,14 +54,17 @@ public class TitleScreenMixin extends Screen {
             )
     )
     protected ButtonWidget.Builder initSinglePlay(ButtonWidget.Builder instance, int x, int y, int width, int height, Operation<ButtonWidget.Builder> original) {
-        if (((ButtonBuilderAccessor) instance).getButtonMessage() instanceof MutableText mutableText) {
-            if (mutableText.getContent() instanceof TranslatableTextContent translatable) {
-                // Swap button position of quit game and single play.
-                if (translatable.getKey().equals("menu.singleplayer")) {
+        if (LycorisConfig.titleScreenSwapQuitGameAndSingleplayerButtons) {
+            if (((ButtonBuilderAccessor) instance).getButtonMessage() instanceof MutableText mutableText) {
+                if (mutableText.getContent() instanceof TranslatableTextContent translatable) {
+                    // Swap button position of quit game and single play.
+                    if (translatable.getKey().equals("menu.singleplayer")) {
+                        y = this.height / 4 + 48;
 
-                    return instance.dimensions(
-                            this.width / 2 + 2, this.quitButtonY + 36 + 36 + 12, 98, 20
-                    );
+                        return instance.dimensions(
+                                this.width / 2 + 2, y + 36 + 36 + 12, 98, 20
+                        );
+                    }
                 }
             }
         }
