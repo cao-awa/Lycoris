@@ -17,7 +17,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class LycorisPickaxeItem extends PickaxeItem {
-    private static final DamageSource DAMAGE_SOURCE = new DamageSource()
     private final ToolMaterial material;
 
     public LycorisPickaxeItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
