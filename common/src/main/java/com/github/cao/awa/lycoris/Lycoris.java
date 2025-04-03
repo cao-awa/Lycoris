@@ -2,6 +2,8 @@ package com.github.cao.awa.lycoris;
 
 import com.github.cao.awa.lycoris.config.LycorisConfig;
 import com.github.cao.awa.lycoris.disc.MusicDiscManager;
+import com.github.cao.awa.lycoris.item.LycorisItems;
+import com.github.cao.awa.lycoris.item.component.LycorisComponents;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,6 +18,8 @@ public class Lycoris {
     public static void init() {
         LycorisConfig.makeConfig();
         MusicDiscManager.init();
+        LycorisItems.init();
+        LycorisComponents.init();
         LOGGER.info("Lycoris is in your Minecraft~");
     }
 }
