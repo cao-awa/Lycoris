@@ -31,3 +31,8 @@
 
 ## Disc
 1. Disc can be throws and flying
+
+## Additional
+### Pickaxes
+Add inverse pickaxes that will hurt player when mined block
+
