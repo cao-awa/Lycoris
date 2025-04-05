@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "model",
-    "model": "lycoris:lycoris_golden_pickaxe"
+    "model": "lycoris:item/lycoris_golden_pickaxe"
   }
 }

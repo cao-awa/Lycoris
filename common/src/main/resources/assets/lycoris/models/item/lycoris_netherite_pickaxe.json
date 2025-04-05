@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "lycoris:lycoris_neherite_pickaxe"
+    "layer0": "lycoris:item/lycoris_neherite_pickaxe"
   }
 }
