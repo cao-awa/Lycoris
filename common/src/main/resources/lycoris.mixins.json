@@ -5,9 +5,11 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "bed.BedBlockMixin",
-    "blocks.tree.BlockMixin",
+    "block.blocks.BlockMixin",
+    "block.entity.HopperBlockEntityMixin",
     "dimension.type.DimensionTypeMixin",
     "enderman.EndermanEntityMixin",
+    "entity.LivingEntityMixin",
     "entity.block.BlockAttachedEntityMixin",
     "entity.player.PlayerEntityMixin",
     "entity.tnt.TntEntityMixin",
