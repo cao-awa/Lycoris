@@ -1,13 +1,11 @@
-package com.github.cao.awa.lycoris.mixin.blocks.tree;
+package com.github.cao.awa.lycoris.mixin.block.blocks;
 
 import com.github.cao.awa.lycoris.Lycoris;
 import com.github.cao.awa.lycoris.tree.TreeAnalyzer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Items;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -20,7 +18,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 

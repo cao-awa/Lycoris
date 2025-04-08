@@ -35,17 +35,6 @@ public class MusicDiscManager {
     );
 
     public static void init() {
-        /*try {
-            Method registerMethod = EntityRenderers.class.getDeclaredMethod("register", EntityType.class, EntityRendererFactory.class);
-            registerMethod.setAccessible(true);
-
-            registerMethod.invoke(null, MusicDiscManager.FLYING_DISC_ENTITY, (EntityRendererFactory<FlyingDiscEntity>) FlyingItemEntityRenderer::new);
-
-            Lycoris.LOGGER.info("Successfully registered FlyingDiscEntity renderer using reflection");
-        } catch (Exception e) {
-            Lycoris.LOGGER.error("Failed to register FlyingDiscEntity renderer", e);
-            throw new RuntimeException("Renderer registration failed", e);
-        }*/
         IEntityRenderers.getRendererFactories().put(MusicDiscManager.FLYING_DISC_ENTITY, (EntityRendererFactory<FlyingDiscEntity>) FlyingItemEntityRenderer::new);
     }
 
