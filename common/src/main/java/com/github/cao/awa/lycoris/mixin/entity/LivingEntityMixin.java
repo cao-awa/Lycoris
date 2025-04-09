@@ -31,8 +31,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
-
-    @Shadow public abstract void setHealth(float health);
+    @Shadow
+    public abstract void setHealth(float health);
 
     @Inject(
             method = "tryUseDeathProtector",
@@ -42,24 +42,24 @@ public abstract class LivingEntityMixin {
             cancellable = true
     )
     public void tryUseDeathProtector(DamageSource source, CallbackInfoReturnable<Boolean> cir) {
-        //Stop entity from dying is attacker has a totem in hand
-        if (!source.isIn(DamageTypeTags.BYPASSES_INVULNERABILITY)){
+        // Stop entity from dying is attacker has a totem in hand
+        if (LycorisConfig.enemyUseDeathProtector && !source.isIn(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
             Entity attacker = source.getAttacker();
             boolean cantDie = false;
             ItemStack itemStack = null;
             DeathProtectionComponent deathProtectionComponent = null;
 
-            if(attacker instanceof LivingEntity livingAttacker) {
+            if (attacker instanceof LivingEntity livingAttacker) {
                 if (attacker instanceof ServerPlayerEntity serverPlayerEntity) {
                     itemStack = serverPlayerEntity.getStackInHand(Hand.OFF_HAND);
                     deathProtectionComponent = itemStack.get(DataComponentTypes.DEATH_PROTECTION);
-                    if(deathProtectionComponent != null) {
+                    if (deathProtectionComponent != null) {
                         serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(itemStack.getItem()));
                         Criteria.USED_TOTEM.trigger(serverPlayerEntity, itemStack);
                         serverPlayerEntity.emitGameEvent(GameEvent.ITEM_INTERACT_FINISH);
                         cantDie = true;
                     }
-                }else{
+                } else {
                     for (Hand hand : Hand.values()) {
                         itemStack = livingAttacker.getStackInHand(hand);
                         deathProtectionComponent = itemStack.get(DataComponentTypes.DEATH_PROTECTION);
@@ -71,11 +71,11 @@ public abstract class LivingEntityMixin {
                     }
                 }
             }
-            if(cantDie) {
-                this.setHealth(1.0F);
+            if (cantDie) {
+                setHealth(1.0F);
                 itemStack.decrement(1);
-                deathProtectionComponent.applyDeathEffects(itemStack, (LivingEntity)(Object)this);
-                attacker.getWorld().sendEntityStatus((LivingEntity)(Object)this, (byte)35);
+                deathProtectionComponent.applyDeathEffects(itemStack, (LivingEntity) (Object) this);
+                attacker.getWorld().sendEntityStatus((LivingEntity) (Object) this, (byte) 35);
                 cir.setReturnValue(true);
             }
         }

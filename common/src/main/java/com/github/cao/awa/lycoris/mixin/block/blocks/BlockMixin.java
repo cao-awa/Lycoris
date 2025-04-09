@@ -57,8 +57,11 @@ public abstract class BlockMixin {
         double gravity = entity.getFinalGravity();
         double time = Math.sqrt(distance / speed);
         double yVelocity = (player.getEyePos().y - entity.getEyePos().y + 0.5 * gravity * time * time) / time;
-        Vec3d direction = new Vec3d(player.getEyePos().x - entity.getEyePos().x,
-                0, player.getEyePos().z - entity.getEyePos().z).normalize();
+        Vec3d direction = new Vec3d(
+                player.getEyePos().x - entity.getEyePos().x,
+                0,
+                player.getEyePos().z - entity.getEyePos().z
+        ).normalize();
         entity.setVelocity(direction.x * speed, yVelocity, direction.z * speed);
         entity.setCustomName(Text.translatable(entity.getBlockState().getBlock().getTranslationKey()));
         entity.setCustomNameVisible(false);

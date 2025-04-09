@@ -32,6 +32,9 @@
 ## Disc
 1. Disc can be throws and flying
 
+## Totem of undying
+1. Make enemy cannot die when player hold the totem of undying in offhand
+
 ## Additional
 ### Pickaxes
 Add inverse pickaxes that will hurt player when mined block

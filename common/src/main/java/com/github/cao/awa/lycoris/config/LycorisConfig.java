@@ -27,6 +27,7 @@ public class LycorisConfig {
     public static int lavaMeltBucketTicks = 200;
     public static boolean discFly = true;
     public static boolean titleScreenSwapQuitGameAndSingleplayerButtons = true;
+    public static boolean enemyUseDeathProtector = true;
 
     public static void makeConfig() {
         try {
@@ -62,6 +63,7 @@ public class LycorisConfig {
         configJson.put("lava_melt_bucket_ticks", lavaMeltBucketTicks);
         configJson.put("disc_fly", discFly);
         configJson.put("title_screen_swap_quit_game_and_singleplayer_buttons", titleScreenSwapQuitGameAndSingleplayerButtons);
+        configJson.put("enemy_use_death_protector", enemyUseDeathProtector);
 
         IOUtil.write(
                 new FileWriter(CONFIG_FILE),
@@ -99,5 +101,6 @@ public class LycorisConfig {
         lavaMeltBucketTicks = json.getIntValue("lava_melt_bucket_ticks", 200);
         discFly = json.getBooleanValue("disc_fly", true);
         titleScreenSwapQuitGameAndSingleplayerButtons = json.getBooleanValue("title_screen_swap_quit_game_and_singleplayer_buttons", true);
+        enemyUseDeathProtector = json.getBooleanValue("enemy_use_death_protector", enemyUseDeathProtector);
     }
 }

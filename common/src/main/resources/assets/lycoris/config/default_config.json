@@ -12,5 +12,6 @@
   "lava_melt_bucket": true,
   "lava_melt_bucket_ticks": 200,
   "disc_fly": true,
-  "title_screen_swap_quit_game_and_singleplayer_buttons": true
+  "title_screen_swap_quit_game_and_singleplayer_buttons": true,
+  "enemy_use_death_protector": true
 }

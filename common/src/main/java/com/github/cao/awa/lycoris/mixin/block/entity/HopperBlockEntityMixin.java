@@ -31,16 +31,21 @@ public class HopperBlockEntityMixin {
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/item/ItemStack;getCount()I"
-            ),cancellable = true
+            ),
+            cancellable = true
     )
-    private static void insert(World world, BlockPos pos, HopperBlockEntity blockEntity,
-                               CallbackInfoReturnable<Boolean> cir, @Local Direction direction,
-                               @Local ItemStack itemstack,@Local int i) {
-        //Drops item if back of the hopper isn't blocked
+    private static void insert(
+            World world, BlockPos pos, HopperBlockEntity blockEntity,
+            CallbackInfoReturnable<Boolean> cir,
+            @Local Direction direction,
+            @Local ItemStack itemstack,
+            @Local int i
+    ) {
+        // Drops item if back of the hopper isn't blocked
         BlockState blockState = world.getBlockState(blockEntity.getPos().offset(direction));
-        if(blockState.isAir()) {
+        if (blockState.isAir()) {
             ItemStack stack = itemstack.copy();
-            stack.setCount(Lycoris.RANDOM.nextInt(1,Math.max(2,(int)itemstack.getCount()/2)));
+            stack.setCount(Lycoris.RANDOM.nextInt(1, Math.max(2, itemstack.getCount() / 2)));
             blockEntity.removeStack(i, stack.getCount());
             Block.dropStack(world, blockEntity.getPos().offset(direction), stack);
             cir.setReturnValue(true);
